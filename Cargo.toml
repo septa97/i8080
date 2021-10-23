@@ -5,4 +5,4 @@ authors = ["mohanson <mohanson@outlook.com>"]
 edition = "2018"
 
 [dependencies]
-rog = "0.1"
+rog = "0.1.8"
