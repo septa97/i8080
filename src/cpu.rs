@@ -264,9 +264,10 @@ impl Cpu {
             _ => opcode,
         };
 
-        debugln!(
-            "{} PC={:04x} SP={:04x} A={:02x} F={:02x} B={:02x} C={:02x} D={:02x} E={:02x} H={:02x} L={:02x}",
+        println!(
+            "{} opcode={:02x} PC={:04x} SP={:04x} A={:02x} F={:02x} B={:02x} C={:02x} D={:02x} E={:02x} H={:02x} L={:02x} Z={}",
             asm::asm(opcode),
+            opcode,
             self.reg.pc.wrapping_sub(1),
             self.reg.sp,
             self.reg.a,
@@ -276,7 +277,8 @@ impl Cpu {
             self.reg.d,
             self.reg.e,
             self.reg.h,
-            self.reg.l
+            self.reg.l,
+            self.reg.get_flag(Flag::Z)
         );
 
         let mut ecycle = 0;
