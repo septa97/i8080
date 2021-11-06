@@ -155,6 +155,7 @@ impl Cpu {
     fn alu_sub(&mut self, n: u8) {
         let a = self.reg.a;
         let r = a.wrapping_sub(n);
+        println!("a: {:02x}, n: {:02x}", a, n);
         self.reg.set_flag(Flag::S, bit::get(r, 7));
         self.reg.set_flag(Flag::Z, r == 0x00);
         self.reg.set_flag(Flag::A, (a as i8 & 0x0f) - (n as i8 & 0x0f) >= 0x00);
