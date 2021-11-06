@@ -265,7 +265,7 @@ impl Cpu {
         };
 
         println!(
-            "{} opcode={:02x} PC={:04x} SP={:04x} A={:02x} F={:02x} B={:02x} C={:02x} D={:02x} E={:02x} H={:02x} L={:02x} Z={} P={}",
+            "{} opcode={:02x} PC={:04x} SP={:04x} A={:02x} F={:02x} B={:02x} C={:02x} D={:02x} E={:02x} H={:02x} L={:02x} Z={} S={} P={} C={} A={}",
             asm::asm(opcode),
             opcode,
             self.reg.pc.wrapping_sub(1),
@@ -279,7 +279,10 @@ impl Cpu {
             self.reg.h,
             self.reg.l,
             self.reg.get_flag(Flag::Z),
-            self.reg.get_flag(Flag::P)
+            self.reg.get_flag(Flag::S),
+            self.reg.get_flag(Flag::P),
+            self.reg.get_flag(Flag::C),
+            self.reg.get_flag(Flag::A)
         );
 
         let mut ecycle = 0;
