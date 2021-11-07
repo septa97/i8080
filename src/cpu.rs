@@ -655,6 +655,7 @@ impl Cpu {
             0x2a => {
                 let a = self.imm_dw();
                 let b = self.mem.borrow().get_word(a);
+                println!("getting mem[{}]: {:02x}", a, b);
                 self.reg.set_hl(b);
             }
 
